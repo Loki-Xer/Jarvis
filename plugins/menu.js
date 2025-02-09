@@ -74,7 +74,7 @@ System({
         }
         menu += `\n┃  ╰─────────────···▸`;
     }
-    menu += ` ╰━━━━━━━━━━━┈⊷\nmade with 🤍`;
+    menu += ` ╰━━━━━━━━━━━┈⊷\nmade with 💫`;
     let url = BOT_INFO.split(';')[2];
     let options = url.includes('&gif') ? { gifPlayback: true, caption: menu } : { caption: menu };  
     url = url.replace(/&gif/g, '');
