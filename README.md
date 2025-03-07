@@ -1,8 +1,8 @@
-#### JARVIS MD WHATSAPP BOT
+#### LUTTU MD WHATSAPP BOT
 jarvis md is Multi Device whatsapp bot
 ***
 
-### SETUP JARVIS
+### SETUP LUTTU
 
 1. Scan the QR code
     <br>
