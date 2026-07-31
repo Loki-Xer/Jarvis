@@ -258,7 +258,7 @@ System({
                 await new Promise((resolve) => pm2.stop('jarvis-md', resolve));
             } else if (server === "KOYEB") {
                 await message.reply("_*Building preparing 𐍮*_")
-                let check = await koyeb.getDeployments();
+                let check = await koyeb.getStatus();
                 if (check) return message.reply('_Please wait..._\n_Currently 2 instances are running in Koyeb, wait to stop one of them._');
                 let data = await koyeb.update();
                 return await message.reply(data);
