@@ -67,17 +67,6 @@ jarvis md is Multi Device whatsapp bot
     <br>
 <a href='https://jarvis-md.vercel.app/deploy#render' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=render&logoColor=white'/></a>
     
- 
-#### DEPLOY TO REPLIT 
-
- 1. If You don't have a account in replit. Create a account in replit.
-    <br>
-<a href='https://replit.com/login' target="_blank"><img alt='railway' src='https://img.shields.io/badge/-Create-black?style=for-the-badge&logo=replit&logoColor=white'/></a>
-
-2. Now Deploy
-    <br>
-<a href='https://jarvis-qr.vercel.app/replit' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/-DEPLOY-black?style=for-the-badge&logo=replit&logoColor=white'/></a>
-
 #### THANKS TO
 - [INRL ❤️](https://github.com/inrl-official) <br>
 
