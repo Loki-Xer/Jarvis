@@ -16,7 +16,7 @@ System({
     pattern: 'mention',
     fromMe: true,
     desc: 'mention',
-    type: 'tool'
+    type: 'manage'
 }, async (message, match) => {
    const { mention = { status: "false", message: "" } } = await getData(message.user.id);
    if (match === "get" && message.isOwner) return await message.send(mention.message || '_*Mention not set yet*_');
@@ -33,7 +33,7 @@ System({
 System({
    pattern: "uptime",
    fromMe: true,
-   type: "tool",
+   type: "server",
    desc: "get the running time of the bot"
 }, async (message) => {
     const uptime = getUptime();
@@ -45,7 +45,7 @@ System({
    pattern: "runtime",
    fromMe: true,
    desc: "get the delpoyed running time of the bot",
-   type: "tool",
+   type: "server",
 }, async (m) => {
     const { loginData } = await getData(m.user.number);
     const runtime = await Runtime(loginData.message);
@@ -57,7 +57,7 @@ System({
     pattern: 'alive',
     fromMe: isPrivate,
     desc: 'Check if the bot is alive',
-    type: 'tool'
+    type: 'misc'
 }, async (message, match) => {
     const { alive } = await getData(message.user.id);
     const data = alive ? alive.message : config.ALIVE_DATA;
@@ -73,7 +73,7 @@ System({
     pattern: "setcmd",
     fromMe: true,
     desc: "set a sticker as a cmd",
-    type: "tool",
+    type: "manage",
 }, async (message, match) => { 
     if (!message.quoted || !message.reply_message.msg || !message.reply_message.msg.fileSha256) return await message.reply('_Reply to an image/video/audio/sticker_'); 
     if (!match) return await message.reply('_Example: setcmd ping_'); 
@@ -87,7 +87,7 @@ System({
     pattern: 'delcmd',
     fromMe: true,
     desc: 'to delete audio/image/video cmd',
-    type: 'tool'
+    type: 'manage'
 }, async (message, match) => {
     if (!match && !message.quoted) return await message.reply('_Send a cmd name to remove it or reply to an image/video/audio/sticker_');
     if(match) {
@@ -106,7 +106,7 @@ System({
     pattern: 'listcmd',
     fromMe: true,
     desc: 'to list all commands',
-    type: 'tool'
+    type: 'manage'
 }, async (message, match) => {
     const result = await database.findAll({ where: { name: "setCmd" } });
     if (!result || result.length === 0) return await message.reply("_*No commands set*_");

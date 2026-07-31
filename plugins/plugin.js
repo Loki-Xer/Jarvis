@@ -21,7 +21,7 @@ System({
   pattern: "plugin",
   fromMe: true,
   desc: "Installs External plugins",
-  type: "support",
+  type: "tools",
 }, async (message, match) => {
   let pluginName = ""; 
   match = match || message.reply_message.text;
@@ -81,7 +81,7 @@ System({
     pattern: "remove",
     fromMe: true,
     desc: "Remove external plugins",
-    type: "support",
+    type: "tools",
 }, async (message, match) => {
      if (!match) return await message.send("_*Need a plugin name to remove*_");
        const pluginPath = __dirname + "/" + match + ".js";

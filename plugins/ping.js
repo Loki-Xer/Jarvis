@@ -14,7 +14,7 @@ const { System, isPrivate, bot } = require("../lib/");
 System({
     pattern: "(ping|speed)",
     fromMe: isPrivate,
-    type: "tool",
+    type: "misc",
     desc: "To check ping",
     adminAccess: true,
 }, async (message) => {
@@ -27,7 +27,7 @@ System({
 System({
     pattern: "(vv|view)",
     fromMe: true,
-    type: "tool",
+    type: "whatsapp",
     desc: "get view ones message"
 }, async (message) => {
    if (!message.reply_message.viewones) return await message.reply("_*Reply to a view once*_");
@@ -38,7 +38,7 @@ System({
    pattern: "reboot",
    fromMe: true,
    desc: "to reboot your bot",
-   type: "tool",
+   type: "server",
 }, async (message, match) => {
     await message.reply('_Rebooting..._')
     bot.restart();

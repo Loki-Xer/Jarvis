@@ -66,6 +66,7 @@ System({
 System({
 	pattern: 'afk',
 	fromMe: true,
+	type: 'misc',
 	desc: 'away from keyboard'
 }, async (message, match) => {
 	if (AFK.isAfk) return;

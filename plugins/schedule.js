@@ -6,7 +6,7 @@ System({
     pattern: "setschedule", 
     fromMe: true, 
     desc: 'To set Schedule Message',
-    type: 'schedule'
+    type: 'manage'
 }, async (message, match) => {
     if (!message.quoted) return await message.send('*Reply to a Message, which is scheduled to send*');
     if (!match.includes(',')) return message.reply("-> *Example :*\n*setschedule jid, HH:MM AM/PM (time) DAY-MONTH-YEAR*\n-> *Example :.setschedule xxx@s.whatsapp.net,10:30 PM 19-11-2024*");    
@@ -23,7 +23,7 @@ System({
   pattern: "getschedule",
   fromMe: true,
   desc: 'To get all Schedule Messages',
-  type: 'schedule',
+  type: 'manage',
 }, async (message) => {
   const { data } = await getSchedule();
   if (data.length === 0) return await message.reply("_No Schedule Message Found_");  
@@ -40,7 +40,7 @@ System({
     pattern: "delschedule", 
     fromMe: true, 
     desc: 'To delete Schedule Message',
-    type: 'schedule'
+    type: 'manage'
 }, async (message, match) => {
     if (!match) return message.reply("-> *Example : delschedule jid, HH:MM AM/PM (time) DAY-MONTH-YEAR*\n->*.delschedule xxx@s.whatsapp.net,10:30 PM 19-11-2024*"); 
     if (!match.includes(',')) return message.reply("-> *Example : delschedule jid, HH:MM AM/PM (time) DAY-MONTH-YEAR*\n->*.delschedule xxx@s.whatsapp.net,10:30 PM 19-11-2024*");    
