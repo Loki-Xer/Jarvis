@@ -89,8 +89,7 @@ System({
     return message.send(`*MediaOne News Headlines:*\n\n${caption}`, { footer: '*MediaOne News*' });
   }
   const news = result[Math.floor(Math.random() * result.length)];
-  return message.send(news.img, 'image', {
-    caption: `Category: ${news.category}\n` + `Time: ${news.date}\n\n` + `*${news.title}*\n\n` + `${news.summary}\n\n` + `Link: ${news.link}`,
+  return message.send(`Category: ${news.category}\n` + `Time: ${news.date}\n\n` + `*${news.title}*\n\n` + `${news.summary}\n\n` + `Link: ${news.link}`, 'text', {
     footer: '*MediaOne News*'
   });
 });
@@ -105,13 +104,13 @@ System({
   const { result } = await getJson(`${api}news/mathrubhumi`);
   if (!Array.isArray(result) || result.length === 0) return message.reply('No news items found');
   if (match.toLowerCase() === 'headline') {
-    const caption = result.map((item, i) => `*${i + 1}. ${item.title}*\nCategory: ${item.category} | Time: ${item.date}\nLink: ${item.link}`).join('\n\n');
+    const caption = result.map((item, i) => `*${i + 1}. ${item.title}*\nTime: ${item.date}\nLink: ${item.link}`).join('\n\n');
     return message.send(`*Mathrubhumi News Headlines:*\n\n${caption}`, {
       footer: '*Mathrubhumi News*'
     });
   };
   const item = result[Math.floor(Math.random() * result.length)];
-  const caption = `*Title:* ${item.title}\n\n` + `Category: ${item.category}\n\n` + `Sub Category: ${item.subCategory}\n\n` + `Time: ${item.date}\n\n` + `Link: ${item.link}`;
+  const caption = `*Title:* ${item.title}\n\n` + `Time: ${item.date}\n\n` + `Link: ${item.link}`;
   if (item.image) return message.send(item.image, 'image', {
     caption: caption, 
     footer: '*Mathrubhumi News*'

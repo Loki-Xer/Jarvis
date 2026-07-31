@@ -41,7 +41,6 @@ System({
 }, async (message, match) => {
     let [date, time] = new Date().toLocaleString("en-IN", { timeZone: config.TIMEZONE }).split(",");
     
-    // NEW: if user typed something after menu (e.g. "menu ai"), use it as a filter
     let filterType = match ? match.trim().toUpperCase() : null;
 
     let menu = `╭━━━〔 ${BOT_INFO.split(';')[0]} ⁩〕━━━···▸\n┃╭──────────────···▸\n✧│ *ᴏᴡɴᴇʀ :*  ${BOT_INFO.split(';')[1]}\n✧│ *ᴜsᴇʀ :* ${message.pushName.replace(/[\r\n]+/gm, "")}\n✧│ *ᴘʟᴜɢɪɴs :* ${plugins.commands.length}\n✧│ *ᴅᴀᴛᴇ :* ${date}\n✧│ *ᴛɪᴍᴇ :* ${time}\n✧│ *ᴜᴘᴛɪᴍᴇ :* ${clockString(uptime())}\n✧│ *ᴠᴇʀsɪᴏɴ :* ᴠ${version}\n┃╰──────────────···▸\n╰━━━━━━━━━━━━━━━···▸\n\n\n${await readMore()}\n╭━━━━━━━━━━━━━━━···▸\n╽`;
@@ -52,7 +51,6 @@ System({
         if (!command.dontAddCommandList && cmd) {
             const type = (command.type || "misc").toUpperCase();
 
-            // NEW: skip anything that doesn't match the requested filter
             if (filterType && type !== filterType) continue;
 
             cmnd.push({ cmd, type });
@@ -60,7 +58,6 @@ System({
         }
     }
 
-    // NEW: if filter was given but nothing matched, tell the user instead of an empty menu
     if (filterType && cmnd.length === 0) {
         return await message.send(`No commands found for category *${filterType}*.`);
     }
