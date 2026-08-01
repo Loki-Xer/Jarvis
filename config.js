@@ -61,7 +61,7 @@ module.exports = {
   STATUS_REPLY: toBool(process.env.STATUS_REPLY || "false"),
   STATUS_REPLY_MSG: process.env.STATUS_REPLY_MSG || "*Nice Status Brother 🦫✨*",
   KICK_BLOCK: toBool(process.env.KICK_BLOCK || "false"),
-  CMD_REACTION: toBool(process.env.CMD_REACTION || 'false'),
+  CMD_REACTION: toBool(process.env.CMD_REACTION || 'true'),
   TIMEZONE: process.env.TIMEZONE || "Asia/Kolkata",
   STARTING_MSG: toBool(process.env.STARTING_MSG || "false"),
   STATUS_REACTION_EMOJI: process.env.STATUS_REACTION_EMOJI || "🍉,🍓",
