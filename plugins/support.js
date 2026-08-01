@@ -41,3 +41,15 @@ System({
     await sleep(500);
     await message.send(formatPluginData(allPluginsData), { quoted: message, contextInfo: { externalAdReply: { title: "External plugins need to edit", body: "Ready to use", thumbnail: { url: "https://graph.org/file/30ab5e1e228a9636ce7f5.jpg" }, mediaType: 1, mediaUrl: 'https://github.com/IRON-M4N/Jarvis-MD-Plugins/tree/main', sourceUrl: "https://github.com/IRON-M4N/Jarvis-MD-Plugins/tree/main", showAdAttribution: true } } });
 });
+
+
+System({
+    pattern: "repo",
+    fromMe: isPrivate,
+    desc: "the bot repo link",
+    type: "support"
+}, async (message) => {
+    const data = await getJson("https://api.github.com/repos/Loki-Xer/jarvis");
+    const text = `\n${data.description || ""}\n\n───────────────\n\n▢ *Stars:* ${data.stargazers_count}\n▢ *Forks:* ${data.forks_count}\n▢ *Watchers:* ${data.watchers_count}\n▢ *Language:* ${data.language}\n▢ *Open Issues:* ${data.open_issues_count}\n───────────────\n*Repo:* ${data.html_url}\n*Deploy:* https://jarvis-md.vercel.app/\n───────────────`;
+    message.send(text);
+});
