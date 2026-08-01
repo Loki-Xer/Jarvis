@@ -121,7 +121,7 @@ System({
       const msg = await message.send(`_*Now playing : ${ytAudio.title} 🎶*_`);
       const data = config.AUDIO_DATA.split(';');
       const aud = await AddMp3Meta(await toAudio(await getBuffer((await youtube(ytAudio.url)).url), 'mp3'), await getBuffer(data[2]), { title: data[0], body: data[1], });
-      await message.reply(aud, { mimetype: 'audio/mpeg', contextInfo: { externalAdReply: { title: ytAudio.author.name, body: ytAudio.ago, thumbnail: await getBuffer(ytAudio.image), mediaType: 1, mediaUrl: ytAudio.url, sourceUrl: ytAudio.url, showAdAttribution: false, renderLargerThumbnail: true } }, quoted: msg }, "audio");
+      await message.reply(aud, { mimetype: 'audio/mpeg', quoted: msg }, "audio");
     } else if (message.body.includes('2')) {
       const data = (await yts(match))[0];
       const q = await message.send(`_*Now playing : ${data.title} 🎶*_`);
