@@ -10,7 +10,7 @@ Jarvis - Loki-Xer
 ------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
-const { System, isPrivate, config } = require("../lib/");
+const { System, isPrivate, config, ig } = require("../lib/");
 const { IronMan, getJson } = require('./client/');
 
 System({
@@ -20,17 +20,16 @@ System({
   type: 'stalk',
 }, async (m, match) => {
   if (!match) return m.reply("*Need a username*\n_Example: .ig sedboy.am_");
-  const user = encodeURIComponent(match.trim());
-  const fetch = async () => (await getJson(`${config.BASE_URL}insta/stalk?query=${user}`));
-  let { result: p, status } = await fetch();
-  if (!p?.name) {
-    await m.reply("Retrying in 2 minutes...");
-    await new Promise(r => setTimeout(r, 120000));
-    ({ result: p, status } = await fetch());
-  }
-  if (!status || !p?.name) return m.reply("Profile not found.");
-  const cap = '*insta stalk 🤍*\n\n' + Object.entries(p).filter(([k,v]) => ['name','username','bio','followers','following','posts','category','private','business','email','phone','externalUrl','actionButton'].includes(k) && v).map(([k,v]) => `*${k}:* ${v}`).join('\n');
-  await m.send({ url: p.profilePic || 'https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_640.png' }, { caption: cap, quoted: m, footer: '*JARVIS-MD*' }, "image");
+  const { status, msg } = await ig(encodeURIComponent(match.trim()));
+  if (status === 404 || status === 429 || status !== 200) return m.reply(msg || "Profile not found.");
+  const cap = '\n'
+    + '➤ *Username    :* ' + msg.username + '\n'
+    + '➤ *Display Name:* ' + msg.displayName + '\n'
+    + '➤ *Followers   :* ' + msg.followers + '\n'
+    + '➤ *Following   :* ' + msg.following + '\n'
+    + '➤ *Posts       :* ' + msg.posts + '\n\n'
+    + '*Bio:*\n' + (msg.bio || '_No bio available_') + '\n'
+  await m.send({ url: msg.profilePic || 'https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_640.png' }, { caption: cap, quoted: m, footer: '*JARVIS-MD*' }, "image");
 });
 
 
