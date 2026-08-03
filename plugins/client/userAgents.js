@@ -45,4 +45,8 @@ const USER_AGENTS = [
 
 function randomUserAgent() {
     return USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)];
-}
+};
+
+module.exports = {
+    randomUserAgent
+};
