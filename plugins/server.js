@@ -253,9 +253,6 @@ System({
         } else {
             if (server === "HEROKU") {
                 await heroku.update(message);
-            } else if (server === "RENDER") {
-                await render.update('do_not_clear');
-                await new Promise((resolve) => pm2.stop('jarvis-md', resolve));
             } else if (server === "KOYEB") {
                 await message.reply("_*Building preparing 𐍮*_")
                 let check = await koyeb.getStatus();
